@@ -43,7 +43,7 @@
             "type" : "shell",
             "execute_command": "{{.Vars}} sudo -E -S bash '{{.Path}}'",
             "scripts": [
-                "./code_setup.sh"
+                "./setup.sh"
             ],
             "environment_vars": [
                 "FOO=bar",
