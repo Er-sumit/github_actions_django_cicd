@@ -6,7 +6,7 @@
         "APP_SECRET": "{{ env `APP_SECRET` }}",
         "new_secret": "{{ env `NEW_SECRET` }}",
         "github_branch": "{{ env `GITHUB_BRANCH` }}",
-        "source_ami" : "ami-0d729d2846a86a9e7",
+        "source_ami" : "ami-0a244485e2e4ffd03",
         "GITHUB_SHA": "{{ env `GITHUB_SHA` }}"
     },
     "builders" : [
@@ -17,15 +17,7 @@
             "access_key": "{{ user `AWS_ACCESS_KEY_ID` }}",
             "secret_key": "{{ user `AWS_SECRET_ACCESS_KEY` }}",
             "instance_type" : "t2.micro",
-            "source_ami_filter": {
-                "filters": {
-                    "name": "ubuntu/images/hvm-ssd/ubuntu-*amd*",
-                    "virtualization-type": "hvm",
-                    "architecture": "x86_64",
-                    "root-device-type": "ebs"
-                },
-                "most_recent": true
-            },
+            "source_ami" : "{{ user `source_ami` }}",
             "ssh_username" : "ubuntu",
             "ssh_timeout": "2m",
             "ami_name" : "django-app-{{user `GITHUB_BRANCH`}}-{{user `GITHUB_SHA`}}",
